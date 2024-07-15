@@ -16,7 +16,8 @@ target 'MMR-Swift-Tutorial' do
     # Pods for testing
   end
 
-  pod "MetaWear", :subspecs => ['UI', 'AsyncUtils', 'Mocks', 'DFU']
+#  pod "MetaWear", :subspecs => ['UI', 'AsyncUtils', 'Mocks', 'DFU']  # mbientlabのSwiftチュートリアルにあったやつ（Mocks以下でエラー）
+  pod "MetaWear", :subspecs => ['UI', 'AsyncUtils', 'DFU']  # MetaWearのREADMEにあったやつ
   pod 'SwiftOSC'
   pod 'CorePlot'
 
