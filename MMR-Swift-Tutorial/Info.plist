@@ -26,6 +26,8 @@
 	<string>Copyright © 2021 Almina. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Want to use bluetooth</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
