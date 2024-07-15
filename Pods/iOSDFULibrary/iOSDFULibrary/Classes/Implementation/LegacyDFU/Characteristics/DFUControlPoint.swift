@@ -212,8 +212,12 @@ internal struct PacketReceiptNotification {
         self.success = success
         self.report  = report
         
-        // Get the peripheral object
-        let peripheral = characteristic.service.peripheral
+        // Get the peripheral object.
+        let optService: CBService? = characteristic.service
+        guard let peripheral = optService?.peripheral else {
+//            report?(.invalidInternalState, "Assert characteristic.service?.peripheral != nil failed")
+            return
+        }
         
         // Set the peripheral delegate to self
         peripheral.delegate = self
@@ -238,8 +242,12 @@ internal struct PacketReceiptNotification {
         self.request   = request
         self.resetSent = false
         
-        // Get the peripheral object
-        let peripheral = characteristic.service.peripheral
+        // Get the peripheral object.
+        let optService: CBService? = characteristic.service
+        guard let peripheral = optService?.peripheral else {
+//            report?(.invalidInternalState, "Assert characteristic.service?.peripheral != nil failed")
+            return
+        }
         
         // Set the peripheral delegate to self
         peripheral.delegate = self
@@ -281,8 +289,12 @@ internal struct PacketReceiptNotification {
         self.report  = report
         self.uploadStartTime = CFAbsoluteTimeGetCurrent()
         
-        // Get the peripheral object
-        let peripheral = characteristic.service.peripheral
+        // Get the peripheral object.
+        let optService: CBService? = characteristic.service
+        guard let peripheral = optService?.peripheral else {
+//            report?(.invalidInternalState, "Assert characteristic.service?.peripheral != nil failed")
+            return
+        }
         
         // Set the peripheral delegate to self
         peripheral.delegate = self

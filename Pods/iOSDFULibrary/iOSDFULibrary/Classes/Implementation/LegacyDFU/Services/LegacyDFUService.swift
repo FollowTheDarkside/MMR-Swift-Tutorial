@@ -137,8 +137,13 @@ import CoreBluetooth
         self.success = success
         self.report  = report
         
-        // Get the peripheral object
-        let peripheral = service.peripheral
+//        // Get the peripheral object
+//        let peripheral = service.peripheral
+        let optPeripheral: CBPeripheral? = service.peripheral
+        guard let peripheral = optPeripheral else {
+//            report(.invalidInternalState, "Assert service.peripheral != nil failed")
+            return
+        }
         
         // Set the peripheral delegate to self
         peripheral.delegate = self
@@ -173,8 +178,15 @@ import CoreBluetooth
         // (otherwise the device would be useless...)
         // Note: On iOS the Generic Access and Generic Attribute services (nor HID Service)
         //       are not returned during service discovery.
-        let services = service.peripheral.services!
-        if services.count == 1 {
+//        let services = service.peripheral.services!
+        let optPeripheral: CBPeripheral? = service.peripheral
+        guard let peripheral = optPeripheral else {
+            logger.e("Assert service.peripheral != nil failed")
+            return false // Return value doesn't really matter.
+        }
+        let services = peripheral.services
+//        if services.count == 1 {
+        if services?.count == 1 {
             return false
         }
         // If there are more services than just DFU Service, the state is uncertain
